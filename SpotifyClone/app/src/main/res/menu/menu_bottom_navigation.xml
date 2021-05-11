@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ic_home"
+        android:icon="@drawable/ic_home_white_24"
+        android:title="@string/botao_inicio"/>
+
+    <item android:id="@+id/ic_search"
+        android:icon="@drawable/ic_search_white_24"
+        android:title="@string/botao_buscar"/>
+
+    <item android:id="@+id/ic_library"
+        android:icon="@drawable/ic_folder_white_24"
+        android:title="@string/botao_biblioteca"/>
+
+
+</menu>
