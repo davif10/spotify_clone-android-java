@@ -1,0 +1,137 @@
+{
+   "artist":[
+      {
+         "id":"1",
+         "name":"U2",
+         "image":"https://www.vagalume.com.br/u2/images/profile.jpg",
+         "genre":"rock",
+         "bibliography":"Bono, Adam Clayton, The Edge e Larry Mullen Jr. formam a banda irlandesa U2, um dos artistas de mais sucesso na história da música. Formada em 1976, a iniciativa foi do baterista Larry, que colocou um cartaz procura-se músicos no colégio onde estudava. Paul Hensow (Bono) no vocal, Adam no baixo e David Evans (The Edge) e seu irmão Dick (ambos guitarristas), com Larry, formaram então o FeedBack.Depois disso, o grupo passaria a adotar um novo nome: The Hype. Começaram a ficar conhecidos, porém trocaram de nome mais uma vez: U2."
+      },
+      {
+         "id":"2",
+         "name":"Eminem",
+         "image":"https://www.vagalume.com.br/eminem/images/profile.jpg",
+         "genre":"rap",
+         "bibliography":"Marshall Bruce Mathers III. Este é o nome do rapper Eminem, um dos músicos mais famosos de hip-hop e que além de cantar, também é produtor e ator. 'Slim Shady' (apelido do artista) já conquistou algumas das premiações mais importantes do planeta, como o Grammy e um Oscar de melhor canção.Eminem também é um dos artistas que mais lucram no mundo da música. Prova disso, foi a estréia bombástica de seu mais recente Cd, Relapse (2009), que já estreou no topo de álbuns da Billboard. Estima-se que o rapper já tenha vendido mais de 60 milhões de discos por todo o planeta."
+      },
+      {
+         "id":"3",
+         "name":"Beyoncé",
+         "image":"https://www.vagalume.com.br/beyonce/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Beyoncé é cantora, tem 27 anos e é natural de Houston, Estados Unidos. Ela fez parte do grupo feminino Destiny's Child. Como grupo, Beyoncé e suas companheiras LeToya Luckett e Latavia Roberson e posteriormente com Kelly Rowland e Michelle Williams venderam mais de 50 milhões de álbuns no mundo inteiro."
+      },
+      {
+         "id":"4",
+         "name":"Justin Bieber",
+         "image":"https://www.vagalume.com.br/justin-bieber/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Justin Bieber é um cantor Pop, que virou uma das grandes revelações do ano de 2009, com apenas 15 anos de idade.Depois de postar vídeos feitos em casa no Youtube, no ano de 2007, o jovem cantor mostrou seu talento em covers de artistas como Usher, Ne-Yo e Stevie Wonder. Foi questão de tempo para Justin atingir o impressionante número de 10 milhões de views."
+      },
+      {
+         "id":"5",
+         "name":"Ed Sheeran",
+         "image":"https://www.vagalume.com.br/ed-sheeran/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Edward Christopher Ed Sheeran nasceu dia 17 de fevereiro de 1991, na cidade de Hebden Bridge, Yorkshire e foi criado em Framlingham, Suffolk. Seu irmão, Matthew nasceu dia 17 de março de 1989, estudou música na universidade e agora é compositor de música clássica. Seu pai, John, é um curador de arte e palestrante e sua mãe, Imogen, é agora uma designer de jóias. Uma das memorias mais antigas de Ed inclui ouvir Bob Dylan e Eric Clapton e de acordo com o cantor, o primeiro álbum que ouviu foi Irish Heartbeat do Van Morrison. Ed começou a cantar na coral da igreja local com quatro anos e aprendeu a tocar guitarra muito jovem. Ele começou a escrever suas próprias músicas quando ainda estava no colegial. Algumas de suas influencias musicais são: Damien Rice, The Beatles, Dylan, Nizlopi e Eminem."
+      },
+      {
+         "id":"6",
+         "name":"Pink",
+         "image":"https://www.vagalume.com.br/pink/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Embora parecesse apenas mais um rostinho bonito na cena pop-adolescente dos anos 90, Alecia Moore, nascida em 8 de setembro de 1979 em Doylestown, perto da Filadélfia, logo ganhou o mundo com o apelido de Pink e uma adorável carinha de bad girl. Nascida em uma família musical, aos 13 anos já dançava e participava como cantora de apoio de shows em sua cidade. No ano seguinte, um DJ local permitiu que ela cantasse uma música a cada sexta-feira, no palco. Em uma dessas noites P!nk foi vista por um executivo da gravadora MCA, que a levou, inicialmente para um grupo chamado Basic Instinc, e depois para outro, feminino, The Choice. As experiências não deram certo, mas Pink impressionou os chefões da gravadora, como o lendário Babyface."
+      },
+      {
+         "id":"7",
+         "name":"Roberto Carlos",
+         "image":"https://www.vagalume.com.br/roberto-carlos/images/profile.jpg",
+         "genre":"mpb",
+         "bibliography":"Capixaba de Cachoeiro do Itapemirim, Roberto Carlos Braga nasceu no dia 19 de abril de 1941.Roberto é o artista latino-americano que teve mais discos vendidos e o cantor brasileiro que mais vendeu discos no mundo. Em 50 anos de carreira, completados em 2009, vendeu cerca de cem milhões de álbuns.Seu sucesso teve início nos anos 60, quando celebrava o rock 'n roll com artistas como Erasmo Carlos, Wanderléa, entre outros. Junto com os dois cantores já citados, Roberto pode ser considerado um dos pais da Jovem Guarda. Nessa época ele emplacou músicas como Splish Splash, Parei na Contramão, É Proibido Fumar e O Calhambeque.Depois de um desentendimento com seu parceiro de composições, Erasmo Carlos, Roberto seguiu escrevendo sozinho músicas marcantes. A trilha sonora do filme Roberto Carlos Em Ritmo De Aventura trazia canções dele como Por Isso Corro Demais, Como É Grande O Meu Por Você e Quando. O filme além de reatar a amizade com Erasmo, garantiu a Roberto o sucesso também nos telões, com uma das maiores bilheterias da época."
+      },
+      {
+         "id":"8",
+         "name":"Anitta",
+         "image":"https://www.vagalume.com.br/anitta/images/profile.jpg",
+         "genre":"funk",
+         "bibliography":"Ela começou a cantar aos sete anos de idade em um coral de uma igreja católica no bairro Honório Gurgel, no Rio de Janeiro; na mesma época ela fez aulas de dança de salão e chegou a dar aulas como professora de dança,[8] e até hoje se aproveita de sua habilidade como dançarina em seus shows e videoclipes, embora tenha trocado a dança de salão pelo stiletto, a dança do salto alto,[9] chegando a ter a música Bang no game Just Dance 2017.Em 2010, após postar um vídeo no YouTube, Renato Azevedo, o então produtor da gravadora independente Furacão 2000, a chamou para assinar contrato com o selo.[12] Devido ao sucesso da canção Meiga e Abusada em 2012, assinou um contrato com a gravadora Warner Music Brasil no ano seguinte. Com a música Show das Poderosas, conseguiu a segunda colocação na parada de singles brasileira Hot 100 Airplay, da Billboard Brasil.[13] Seu primeiro álbum de estúdio, Anitta, foi lançado em julho do mesmo ano.[14]"
+      },
+      {
+         "id":"9",
+         "name":"The Beatles",
+         "image":"https://www.vagalume.com.br/the-beatles/images/profile.jpg",
+         "genre":"rock",
+         "bibliography":"The Beatles foi uma banda britânica, de rock, formada em Liverpool, cidade do noroeste da Inglaterra, que ficou famosa em todo o mundo e influenciou toda uma geração, movimento que a imprensa britânica chamou de Beatlemania.The Beatles foi formada em 1960, por 4 integrantes, John Lennon, Ringo Starr, Paul McCartney e George Harrison. A banda criada em 1957, inicialmente foi formada por John Lennon e seus colegas de escola, Peter Sholton, Erick Griffths, Bill Smith e Rod Davis. Em homenagem a escola Quarry Bank School, a banda recebeu o nome de The Quarrymen."
+      },
+      {
+         "id":"10",
+         "name":"Taylor Swift",
+         "image":"https://www.vagalume.com.br/taylor-swift/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Taylor Swift começou sua carreira logo cedo. Aos 10 anos de idade a garotinha com cachinhos loiros já encantava o público cantando em festivais e karaokês. Aos 11 anos, fez uma viagem até a cidade de Nashville e deixou uma fita demo em todas as gravadoras que encontrou.Quando tinha apenas 14 anos, Taylor se tornou a mais jovem pessoa a fazer parte da equipe de compositores profissionais da Sony/ATV Publishing. Ela fechou seu primeiro contrato com uma gravadora antes de começar a dirigir, e aos 17 foi a cantora mais jovem a escrever e cantar sozinha um hit que foi para o topo das paradas americanas."
+      },
+      {
+         "id":"11",
+         "name":"Ariana Grande",
+         "image":"https://www.vagalume.com.br/ariana-grande/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Ariana Grande nasceu no dia 26 de junho de 1993 em Boca Raton, Florida. Ariana Grande-Butera é filha de uma executiva chefe de uma empresa de sistema de telefone e alarmes e de um dono de uma firma de design gráfico. Ela também tem um meio irmão, Frankie Grande, que é ator, dançarino e produtor.A atriz e cantora começou sua carreira artística na Broadway, no elenco do musical 13, antes de começar a interpretar Cat Valentine no seriado da Nickelodeon, Brilhante Vitoria em 2009. O seriado chegou ao fim depois de quatro temporadas, mas Ariana continuou a interpretar Cat no spinoff Sam & Cat, que ficou no ar até 2014. Nesse período, ela apareceu em outros papeis no teatro, televisão e filmes. Ela também já dublou animações para TV e filmes."
+      },
+      {
+         "id":"12",
+         "name":"Mc Livinho",
+         "image":"https://www.vagalume.com.br/mc-livinho/images/profile.jpg",
+         "genre":"funk",
+         "bibliography":"Oliver Decesary Santos, conhecido atualmente como MC Livinho, é um dos maiores sucessos do funk paulista. Mas, o que nem todo mundo sabe é que o seu envolvimento com a música não começou com esse gênero.Livinho foi incentivado desde a infância pelos pais a ouvir MPB e, por isso, tem como principais influências Djavan, Ana Carolina, Chico Buarque e Maria Gadú. Ele, inclusive, foi violinista da igreja que frequentou de 2003 até 2008."
+      },
+      {
+         "id":"13",
+         "name":"Zezé Di Camargo e Luciano",
+         "image":"https://www.vagalume.com.br/zeze-di-camargo-e-luciano/images/profile.jpg",
+         "genre":"sertanejo",
+         "bibliography":"Prenunciados por versos que lhes serviriam como uma declaração de princípios, de romantismo incondicional - Eu não vou negar que sou louco por você -, Zezé di Camargo e Luciano não fizeram cerimônia: foram logo estendendo o tapete vermelho para entrarem no seleto clube da MPB só para aqueles com álbuns com mais de 1 milhão de cópias vendidas. Era apenas o disco de estréia, em 1991, quando tinham em mão É o amor, a música de maior sucesso do país naquele ano, um estouro, uma mania, um vício."
+      },
+      {
+         "id":"14",
+         "name":"Racionais Mc's",
+         "image":"https://www.vagalume.com.br/racionais-mcs/images/profile.jpg",
+         "genre":"rap",
+         "bibliography":"Racionais MC's é um grupo brasileiro de rap, que surgiu em 1988, na coletânea Consciência Black, com as músicas Pânico na Zona Sul e Tempos Difíceis. As letras do grupo tem como objetivo mostrar a desigualdade social brasileira, abordando diversos temas como crime e injustiças.Formado por Mano Brown (Pedro Paulo Soares Pereira), Ice Blue (Paulo Eduardo Salvador), Edy Rock (Edivaldo Pereira Alves) e KL Jay (Kleber Geraldo Lelis Simões), o sucesso do Racionais Mc's ultrapassou barreiras nacionais, realizando apresentações ao vivo na Europa e na Ásia."
+      },
+      {
+         "id":"15",
+         "name":"Michael Jackson",
+         "image":"https://www.vagalume.com.br/michael-jackson/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Michael Jackson (1958-2009), conhecido como o Rei do Pop (apelido dado por Elizabeth Taylor), foi um cantor, compositor e dançarino norte-americano. Ele foi um dos maiores artistas do showbiz mundial. Michael Jackson nasceu em Indiana, Estados Unidos, no dia 29 de agosto de 1958. Filho de Joseph Walter Jackson (conhecido como Joe) e Katherine Scruse Jackson, Michael era o sétimo de nove irmãos."
+      },
+      {
+         "id":"16",
+         "name":"Shakira",
+         "image":"https://www.vagalume.com.br/shakira/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Shakira nasceu na Colômbia, na cidade de Barranquilla, em 2 de Fevereiro de 1977. Aos quatro anos de idade começou a ter aulas de dança árabe e começou a mostrar seus dotes para música aos oito anos, quando escreveu sua primeira canção. Dois anos mais tarde, saiu vencedora em vários concursos regionais em seu país. O primeiro disco - Magia - foi lançado aos 13 e trazia uma compilação de músicas escritas por ela entre os oito e dez anos. Mesmo desclassificada do Festival Oti, da Espanha (a idade mínima era de 16 anos e Shakira, na época, tinha 15), ela não se abalou e aproveitou para gravar o segundo CD, Peligro. Em seguida, veio Pies Descalzos que, por conta do reconhecimento internacional, a levou a uma turnê de dois anos pela América Latina e Estados Unidos."
+      },
+      {
+         "id":"17",
+         "name":"Bob Marley",
+         "image":"https://www.vagalume.com.br/bob-marley/images/profile.jpg",
+         "genre":"reggae",
+         "bibliography":"Bob Marley OM (nascido Robert Nesta Marley, Nine Mile, 6 de fevereiro de 1945 ? Miami, 11 de maio de 1981), foi um cantor, guitarrista e compositorjamaicano, o mais conhecido músico de reggae de todos os tempos, famoso por popularizar o gênero. Grande parte do seu trabalho lidava com os problemas dos pobres e oprimidos. Bob foi casado com Rita Marley, uma das I Threes, que passaram a cantar com os Wailers depois que eles alcançaram sucesso internacional. Ela foi mãe de quatro de seus doze filhos (dois deles adotados), os renomados Ziggy e Stephen Marley, que continuam o legado musical de seu pai na bandaMelody Makers. Outros de seus filhos, Kymani Marley, Julian Marley e Damian Marley (vulgo Jr. Gong) também seguiram carreira musical. Foi eleito pela revista Rolling Stone o 11º maior artista da música de todos os tempos."
+      },
+      {
+         "id":"18",
+         "name":"Katy Perry",
+         "image":"https://www.vagalume.com.br/katy-perry/images/profile.jpg",
+         "genre":"pop",
+         "bibliography":"Katheryn Elizabeth Hudson é o nome da cantora californiana Katy Perry, autora dos sucessos I Kissed A Girl e Hot N' Cold. Por ter uma criação religiosa forte (filha de pastor e cresceu cantando músicas gospel), Katy polemizou ao aparecer nas paradas dizendo que beijou uma mulher. O álbum de estréia da cantora de 24 anos (nascida em 25 de outubro de 1984) se chama One Of The Boys."
+      },
+      {
+         "id":"19",
+         "name":"Jorge e Mateus",
+         "image":"https://www.vagalume.com.br/jorge-e-mateus/images/profile.jpg",
+         "genre":"rock",
+         "bibliography":"Responsáveis por algumas das levadas mais animadas do sertanejo universitário, como Pode Chorar, De Tanto Te Querer, Voa Beija-Flor, Querendo Te Amar, Amo Noite E Dia, entre outras, os goianos Jorge& Mateus, da cidade de Itumbiara, interior de Goiás, ganharam projeção nacional e, hoje, são considerados uma das principais duplas sertanejas do Brasil.Foi através de um amigo em comum, em 2005, que Jorge, estudante de Direito que participava,sozinho, de muitos festivais de música, e Mateus,que cursava agronomia e que também se apresentava em festas e festivais de música, tiveram a oportunidade de cantarem juntos em um churrasco de amigos. A sintonia foi tão forte, que os músicos passaram a fazer shows como dupla. A primeira apresentação foi em 26 de maio de 2005, numa boate da cidade de Itumbiara para um público universitário."
+      }
+   ]
+}

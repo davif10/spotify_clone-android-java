@@ -32,11 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void configuraBottomNavigationView(){
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavigation);
-        //Configurações iniciais
-        /*bottomNavigationViewEx.enableAnimation(true);
-        bottomNavigationViewEx.enableItemShiftingMode(false);
-        bottomNavigationViewEx.enableShiftingMode(false);
-        bottomNavigationViewEx.setTextVisibility(false);*/
 
         habilitarNavegacao(bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
