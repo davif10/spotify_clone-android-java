@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#FF000000</color>
-    <color name="colorPrimaryDark">@android:color/transparent</color>
+    <color name="colorPrimaryDark">#1C1C1C</color>
     <color name="colorBottomNavigation">#282828</color>
 </resources>

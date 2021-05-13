@@ -7,4 +7,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_por_onde_comecar">Por onde começar</string>
     <string name="logo_spotify">Logo Spotify</string>
+    <string name="imagem_adapter_artista">Imagem padrão para o adapter artista</string>
+    <string name="artista">Artista</string>
 </resources>

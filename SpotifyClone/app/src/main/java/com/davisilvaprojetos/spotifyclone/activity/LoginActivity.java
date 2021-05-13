@@ -5,14 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.davisilvaprojetos.spotifyclone.R;
+import com.davisilvaprojetos.spotifyclone.api.ApiService;
 import com.davisilvaprojetos.spotifyclone.helper.ApiConfig;
+import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
+import com.davisilvaprojetos.spotifyclone.model.Artistas;
+import com.davisilvaprojetos.spotifyclone.model.Type;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class LoginActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE = 1337;
-    private static final String REDIRECT_URI = "yourcustomprotocol://callback";
 
 
     @Override
@@ -20,19 +30,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        AuthenticationRequest.Builder builder =
-                new AuthenticationRequest.Builder(ApiConfig.CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-
-        builder.setScopes(new String[]{"streaming"});
-        AuthenticationRequest request = builder.build();
-
-        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
+
+
 }

@@ -3,23 +3,23 @@ package com.davisilvaprojetos.spotifyclone.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
 import com.davisilvaprojetos.spotifyclone.api.ApiService;
-import com.davisilvaprojetos.spotifyclone.helper.ApiConfig;
 import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
-import com.spotify.android.appremote.api.ConnectionParams;
-import com.spotify.android.appremote.api.Connector;
-import com.spotify.android.appremote.api.SpotifyAppRemote;
-
-import com.spotify.protocol.client.Subscription;
-import com.spotify.protocol.types.PlayerState;
-import com.spotify.protocol.types.Track;
+import com.davisilvaprojetos.spotifyclone.model.Artistas;
+import com.davisilvaprojetos.spotifyclone.model.Type;
 
 import com.davisilvaprojetos.spotifyclone.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,8 +28,10 @@ import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
     private Retrofit retrofit;
-    private String resultado;
-    String pes ="skank";
+    private  List<Artistas> listArtist = new ArrayList<>();
+    private Type typeMusic;
+    private AdapterArtista adapterArtista;
+    private RecyclerView recyclerArtista;
 
     public HomeFragment() {
 
@@ -39,72 +41,57 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerArtista = view.findViewById(R.id.recyclerArtist);
         retrofit = RetrofitConfig.getRetrofit();
-
-
-        //recuperarDadosArtista(pes);
-        //recuperarDadosMusica(pes);
-
-
 
         return view;
     }
-
-    private void recuperarDadosArtista(String pesquisa){
-        String q = pesquisa.replaceAll(" ","-");
+    private void recuperarDadosArtista(){
+        listArtist.clear();
         ApiService apiService = retrofit.create(ApiService.class);
         apiService.recuperarDadosArtista(
-                ApiConfig.CHAVE_API,
-                pesquisa,
-                "1"
 
-        ).enqueue(new Callback<String>() {
+        ).enqueue(new Callback<Type>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Type> call, Response<Type> response) {
                 if(response.isSuccessful()){
-                    resultado = response.body();
-                    System.out.println("Resultado: "+resultado);
+                    typeMusic = response.body();
+                    if(typeMusic != null){
+                        listArtist.addAll(typeMusic.getArtist());
+                        configRecyclerViewArtist();
+                    }
+
                 }
 
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Type> call, Throwable t) {
                 System.out.println("Erro: "+t.getMessage());
             }
         });
     }
 
+    public void configRecyclerViewArtist(){
+        adapterArtista = new AdapterArtista(listArtist, getActivity()) ;
+        RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
+                getActivity(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+        );
 
-    private void recuperarDadosMusica(String pesquisa){
-        String q = pesquisa.replaceAll(" ","-");
-        ApiService apiService = retrofit.create(ApiService.class);
-        apiService.recuperarDadosArtista(
-                ApiConfig.CHAVE_API,
-                q,
-                "5"
+        recyclerArtista.setHasFixedSize(true);
+        recyclerArtista.setLayoutManager(layoutManagerHorizontal);
+        recyclerArtista.setAdapter(adapterArtista);
 
-        ).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
-                    resultado = response.body();
-                    System.out.println("Resultado: "+resultado);
-                }
 
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                System.out.println("Erro: "+t.getMessage());
-            }
-        });
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
-
+        recuperarDadosArtista();
     }
 
 

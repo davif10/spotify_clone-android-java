@@ -48,5 +48,8 @@ dependencies {
     implementation 'com.spotify.android:auth:1.1.0'
     implementation 'androidx.browser:browser:1.0.0'
 
+    //Biblioteca Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }
