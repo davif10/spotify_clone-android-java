@@ -29,9 +29,9 @@ import retrofit2.Retrofit;
 public class HomeFragment extends Fragment {
     private Retrofit retrofit;
     private  List<Artistas> listArtist = new ArrayList<>();
+    private  List<Artistas> listDifferentGender = new ArrayList<>();
     private Type typeMusic;
-    private AdapterArtista adapterArtista;
-    private RecyclerView recyclerArtista;
+    private RecyclerView recyclerArtist, recyclerDifferentGender;
 
     public HomeFragment() {
 
@@ -41,8 +41,12 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerArtista = view.findViewById(R.id.recyclerArtist);
+        recyclerArtist = view.findViewById(R.id.recyclerArtist);
+        recyclerDifferentGender = view.findViewById(R.id.recyclerGenerosDiferentes);
+
         retrofit = RetrofitConfig.getRetrofit();
+
+        recuperarDadosArtista();
 
         return view;
     }
@@ -59,6 +63,7 @@ public class HomeFragment extends Fragment {
                     if(typeMusic != null){
                         listArtist.addAll(typeMusic.getArtist());
                         configRecyclerViewArtist();
+                        criarGeneroDiferente(listArtist);
                     }
 
                 }
@@ -73,16 +78,40 @@ public class HomeFragment extends Fragment {
     }
 
     public void configRecyclerViewArtist(){
-        adapterArtista = new AdapterArtista(listArtist, getActivity()) ;
+        AdapterArtista adapterArtista = new AdapterArtista(listArtist, getActivity());
         RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
                 getActivity(),
                 LinearLayoutManager.HORIZONTAL,
                 false
         );
 
-        recyclerArtista.setHasFixedSize(true);
-        recyclerArtista.setLayoutManager(layoutManagerHorizontal);
-        recyclerArtista.setAdapter(adapterArtista);
+        recyclerArtist.setHasFixedSize(true);
+        recyclerArtist.setLayoutManager(layoutManagerHorizontal);
+        recyclerArtist.setAdapter(adapterArtista);
+
+
+    }
+
+    private void criarGeneroDiferente(List<Artistas> artistas){
+        for(int i =0; i< artistas.size();i++){
+            if(!artistas.get(i).getGenre().equals("pop")){
+                listDifferentGender.add(artistas.get(i));
+            }
+        }
+        configRecyclerViewListaDiferente();
+    }
+
+    public void configRecyclerViewListaDiferente(){
+        AdapterArtista adapterDifferent = new AdapterArtista(listDifferentGender, getActivity());
+        RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
+                getActivity(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+        );
+
+        recyclerDifferentGender.setHasFixedSize(true);
+        recyclerDifferentGender.setLayoutManager(layoutManagerHorizontal);
+        recyclerDifferentGender.setAdapter(adapterDifferent);
 
 
     }
@@ -91,7 +120,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        recuperarDadosArtista();
     }
 
 

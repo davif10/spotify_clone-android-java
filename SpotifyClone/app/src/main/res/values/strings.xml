@@ -9,4 +9,8 @@
     <string name="logo_spotify">Logo Spotify</string>
     <string name="imagem_adapter_artista">Imagem padrão para o adapter artista</string>
     <string name="artista">Artista</string>
+    <string name="rock">Rock</string>
+    <string name="experimente_algo_diferente">Experimente algo diferente</string>
+    <string name="historico_artistas">Botão histórico de artistas</string>
+    <string name="generos">Gêneros</string>
 </resources>
