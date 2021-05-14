@@ -10,4 +10,12 @@
     <color name="colorPrimary">#FF000000</color>
     <color name="colorPrimaryDark">#1C1C1C</color>
     <color name="colorBottomNavigation">#282828</color>
+
+    <color name="rock">#EA3030</color>
+    <color name="sertanejo">#FF5722</color>
+    <color name="pop">#FF6EDB</color>
+    <color name="funk">#C13763</color>
+    <color name="rap">#6E3967</color>
+    <color name="mpb">#FFC107</color>
+    <color name="reggae">#FF9800</color>
 </resources>

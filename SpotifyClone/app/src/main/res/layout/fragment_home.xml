@@ -1,70 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_degrade"
-    android:orientation="vertical"
-    tools:context=".fragment.HomeFragment">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal">
+        android:background="@drawable/background_degrade"
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        tools:context=".fragment.HomeFragment">
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/title_por_onde_comecar"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/historico_artistas"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/iconreload" />
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/iconsettings" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/title_por_onde_comecar"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/historico_artistas"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/iconreload" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerArtist"
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/iconsettings" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerArtist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <include layout="@layout/genero_diferente_layout" />
+
+        <include layout="@layout/escolha_genero_layout" />
+
     </LinearLayout>
 
-    <include layout="@layout/genero_diferentes_layout" />
-
-</LinearLayout>
+</ScrollView>

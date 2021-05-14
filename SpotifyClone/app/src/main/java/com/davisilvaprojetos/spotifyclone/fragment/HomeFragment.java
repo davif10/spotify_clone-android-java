@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
+import com.davisilvaprojetos.spotifyclone.adapter.AdapterGenero;
 import com.davisilvaprojetos.spotifyclone.api.ApiService;
 import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
@@ -28,10 +29,10 @@ import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
     private Retrofit retrofit;
-    private  List<Artistas> listArtist = new ArrayList<>();
-    private  List<Artistas> listDifferentGender = new ArrayList<>();
+    private final List<Artistas> listArtist = new ArrayList<>();
+    private final List<Artistas> listDifferentGender = new ArrayList<>();
     private Type typeMusic;
-    private RecyclerView recyclerArtist, recyclerDifferentGender;
+    private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre;
 
     public HomeFragment() {
 
@@ -43,11 +44,12 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerArtist = view.findViewById(R.id.recyclerArtist);
         recyclerDifferentGender = view.findViewById(R.id.recyclerGenerosDiferentes);
+        recyclerGenre = view.findViewById(R.id.recyclerEscolhaGenero);
 
         retrofit = RetrofitConfig.getRetrofit();
 
         recuperarDadosArtista();
-
+        configRecyclerViewGeneros();
         return view;
     }
     private void recuperarDadosArtista(){
@@ -64,6 +66,7 @@ public class HomeFragment extends Fragment {
                         listArtist.addAll(typeMusic.getArtist());
                         configRecyclerViewArtist();
                         criarGeneroDiferente(listArtist);
+
                     }
 
                 }
@@ -112,6 +115,23 @@ public class HomeFragment extends Fragment {
         recyclerDifferentGender.setHasFixedSize(true);
         recyclerDifferentGender.setLayoutManager(layoutManagerHorizontal);
         recyclerDifferentGender.setAdapter(adapterDifferent);
+
+
+    }
+
+
+    public void configRecyclerViewGeneros(){
+        String[] generos = {"rock","rap","pop","mpb","funk","sertanejo","reggae"} ;
+        AdapterGenero adapterGenero = new AdapterGenero(generos);
+        RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
+                getActivity(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+        );
+
+        recyclerGenre.setHasFixedSize(true);
+        recyclerGenre.setLayoutManager(layoutManagerHorizontal);
+        recyclerGenre.setAdapter(adapterGenero);
 
 
     }
