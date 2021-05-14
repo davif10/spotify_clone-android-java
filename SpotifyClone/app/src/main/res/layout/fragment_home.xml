@@ -75,6 +75,10 @@
 
         <include layout="@layout/escolha_genero_layout" />
 
+        <include
+            layout="@layout/genero_artistas_layout"
+            android:visibility="gone" />
+
     </LinearLayout>
 
 </ScrollView>

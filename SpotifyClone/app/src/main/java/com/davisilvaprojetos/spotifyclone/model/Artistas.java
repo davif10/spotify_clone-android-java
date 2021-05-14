@@ -1,6 +1,8 @@
 package com.davisilvaprojetos.spotifyclone.model;
 
-public class Artistas {
+import java.io.Serializable;
+
+public class Artistas implements Serializable {
     private String id;
     private String name;
     private String image;

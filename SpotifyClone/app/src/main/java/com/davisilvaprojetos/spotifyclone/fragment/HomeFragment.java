@@ -1,5 +1,6 @@
 package com.davisilvaprojetos.spotifyclone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
+import com.davisilvaprojetos.spotifyclone.activity.DetalhesArtistaActivity;
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterGenero;
 import com.davisilvaprojetos.spotifyclone.api.ApiService;
+import com.davisilvaprojetos.spotifyclone.helper.RecyclerItemClickListener;
 import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
 import com.davisilvaprojetos.spotifyclone.model.Type;
@@ -31,8 +36,10 @@ public class HomeFragment extends Fragment {
     private Retrofit retrofit;
     private final List<Artistas> listArtist = new ArrayList<>();
     private final List<Artistas> listDifferentGender = new ArrayList<>();
+    private final List<Artistas> listGenre = new ArrayList<>();
     private Type typeMusic;
-    private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre;
+    private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre, recyclerArtistGenre;
+    private LinearLayout layoutGenero;
 
     public HomeFragment() {
 
@@ -42,17 +49,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerArtist = view.findViewById(R.id.recyclerArtist);
-        recyclerDifferentGender = view.findViewById(R.id.recyclerGenerosDiferentes);
-        recyclerGenre = view.findViewById(R.id.recyclerEscolhaGenero);
-
-        retrofit = RetrofitConfig.getRetrofit();
+        configuracoesIniciais(view);
 
         recuperarDadosArtista();
         configRecyclerViewGeneros();
         return view;
     }
-    private void recuperarDadosArtista(){
+
+    private void recuperarDadosArtista() {
         listArtist.clear();
         ApiService apiService = retrofit.create(ApiService.class);
         apiService.recuperarDadosArtista(
@@ -60,9 +64,9 @@ public class HomeFragment extends Fragment {
         ).enqueue(new Callback<Type>() {
             @Override
             public void onResponse(Call<Type> call, Response<Type> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     typeMusic = response.body();
-                    if(typeMusic != null){
+                    if (typeMusic != null) {
                         listArtist.addAll(typeMusic.getArtist());
                         configRecyclerViewArtist();
                         criarGeneroDiferente(listArtist);
@@ -75,12 +79,12 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Type> call, Throwable t) {
-                System.out.println("Erro: "+t.getMessage());
+                System.out.println("Erro: " + t.getMessage());
             }
         });
     }
 
-    public void configRecyclerViewArtist(){
+    public void configRecyclerViewArtist() {
         AdapterArtista adapterArtista = new AdapterArtista(listArtist, getActivity());
         RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
                 getActivity(),
@@ -95,16 +99,16 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void criarGeneroDiferente(List<Artistas> artistas){
-        for(int i =0; i< artistas.size();i++){
-            if(!artistas.get(i).getGenre().equals("pop")){
+    private void criarGeneroDiferente(List<Artistas> artistas) {
+        for (int i = 0; i < artistas.size(); i++) {
+            if (!artistas.get(i).getGenre().equals("pop")) {
                 listDifferentGender.add(artistas.get(i));
             }
         }
         configRecyclerViewListaDiferente();
     }
 
-    public void configRecyclerViewListaDiferente(){
+    public void configRecyclerViewListaDiferente() {
         AdapterArtista adapterDifferent = new AdapterArtista(listDifferentGender, getActivity());
         RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
                 getActivity(),
@@ -120,8 +124,8 @@ public class HomeFragment extends Fragment {
     }
 
 
-    public void configRecyclerViewGeneros(){
-        String[] generos = {"rock","rap","pop","mpb","funk","sertanejo","reggae"} ;
+    public void configRecyclerViewGeneros() {
+        String[] generos = {"rock", "rap", "pop", "mpb", "funk", "sertanejo", "reggae"};
         AdapterGenero adapterGenero = new AdapterGenero(generos);
         RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
                 getActivity(),
@@ -133,7 +137,94 @@ public class HomeFragment extends Fragment {
         recyclerGenre.setLayoutManager(layoutManagerHorizontal);
         recyclerGenre.setAdapter(adapterGenero);
 
+        recyclerGenre.addOnItemTouchListener(new RecyclerItemClickListener(
+                getActivity(),
+                recyclerGenre,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        String generoEscolhido = generos[position];
+                        //Chamar método que exibe o layout com o genero correto
+                        criarListaGenero(listArtist, generoEscolhido);
+                    }
 
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }
+        ));
+
+
+    }
+
+    private void criarListaGenero(List<Artistas> artistas, String genero) {
+        for (int i = 0; i < artistas.size(); i++) {
+            if (artistas.get(i).getGenre().equals(genero)) {
+                listGenre.add(artistas.get(i));
+            }
+        }
+        configRecyclerViewListaGenero();
+    }
+
+    public void configRecyclerViewListaGenero() {
+        layoutGenero.setVisibility(View.VISIBLE);
+
+        AdapterArtista adapterArtista = new AdapterArtista(listGenre, getActivity());
+        RecyclerView.LayoutManager layoutManagerHorizontal = new LinearLayoutManager(
+                getActivity(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+        );
+
+        recyclerArtistGenre.setHasFixedSize(true);
+        recyclerArtistGenre.setLayoutManager(layoutManagerHorizontal);
+        recyclerArtistGenre.setAdapter(adapterArtista);
+
+        recyclerArtistGenre.addOnItemTouchListener(new RecyclerItemClickListener(
+                getActivity(),
+                recyclerArtistGenre,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Artistas artista = listGenre.get(position);
+                        abrirTelaDetalhesArtista(artista);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }
+        ));
+
+
+    }
+
+    private void abrirTelaDetalhesArtista(Artistas artista){
+        Intent i = new Intent(getActivity(), DetalhesArtistaActivity.class);
+        i.putExtra("artista",artista);
+        startActivity(i);
+    }
+
+    private void configuracoesIniciais(View view){
+        recyclerArtist = view.findViewById(R.id.recyclerArtist);
+        recyclerDifferentGender = view.findViewById(R.id.recyclerGenerosDiferentes);
+        recyclerGenre = view.findViewById(R.id.recyclerEscolhaGenero);
+        recyclerArtistGenre = view.findViewById(R.id.recyclerArtistasGenero);
+        layoutGenero = view.findViewById(R.id.layoutGeneroArtistas);
+
+        retrofit = RetrofitConfig.getRetrofit();
     }
 
 
