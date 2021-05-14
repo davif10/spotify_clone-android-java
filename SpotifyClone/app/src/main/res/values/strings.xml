@@ -13,4 +13,6 @@
     <string name="experimente_algo_diferente">Experimente algo diferente</string>
     <string name="historico_artistas">Botão histórico de artistas</string>
     <string name="generos">Gêneros</string>
+    <string name="imagem_artista_detalhe">Imagem do artista na página de detalhes</string>
+    <string name="bibliografia">Bibliografia</string>
 </resources>
