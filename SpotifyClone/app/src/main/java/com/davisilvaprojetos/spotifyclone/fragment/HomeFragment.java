@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,17 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 
 import com.davisilvaprojetos.spotifyclone.activity.DetalhesArtistaActivity;
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterGenero;
-import com.davisilvaprojetos.spotifyclone.api.ApiService;
 import com.davisilvaprojetos.spotifyclone.helper.RecyclerItemClickListener;
-import com.davisilvaprojetos.spotifyclone.helper.RequestConfig;
-import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
-import com.davisilvaprojetos.spotifyclone.model.Type;
 
 import com.davisilvaprojetos.spotifyclone.R;
 import com.davisilvaprojetos.spotifyclone.viewmodel.ArtistListViewModel;
@@ -30,19 +26,12 @@ import com.davisilvaprojetos.spotifyclone.viewmodel.ArtistListViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
-    private Retrofit retrofit;
     private List<Artistas> listArtist = new ArrayList<>();
     private final List<Artistas> listDifferentGender = new ArrayList<>();
     private final List<Artistas> listGenre = new ArrayList<>();
-    private Type typeMusic;
     private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre, recyclerArtistGenre;
-    private LinearLayout layoutGenero;
     private ArtistListViewModel artistListViewModel = new ArtistListViewModel();
 
     public HomeFragment() {
@@ -64,7 +53,7 @@ public class HomeFragment extends Fragment {
             public void onChanged(List<Artistas> artistas) {
                 if (!artistas.isEmpty()) {
                     listArtist = artistas;
-                    configRecyclerViewArtist();
+                    configRecyclerViewArtist(listArtist,recyclerArtist);
                     criarGeneroDiferente(listArtist);
                 }
             }
@@ -72,8 +61,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void configRecyclerViewArtist() {
-        AdapterArtista adapterArtista = new AdapterArtista(listArtist,"home");
+    public void configRecyclerViewArtist(List<Artistas> listaArtistas, RecyclerView recyclerArtist) {
+        AdapterArtista adapterArtista = new AdapterArtista(listaArtistas,"home");
         RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
 
         recyclerArtist.setHasFixedSize(true);
@@ -86,7 +75,7 @@ public class HomeFragment extends Fragment {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Artistas artista = listArtist.get(position);
+                        Artistas artista = listaArtistas.get(position);
                         abrirTelaDetalhesArtista(artista);
                     }
 
@@ -110,42 +99,9 @@ public class HomeFragment extends Fragment {
                 listDifferentGender.add(artistas.get(i));
             }
         }
-        configRecyclerViewListaDiferente();
+
+        configRecyclerViewArtist(listDifferentGender, recyclerDifferentGender);
     }
-
-    public void configRecyclerViewListaDiferente() {
-        AdapterArtista adapterDifferent = new AdapterArtista(listDifferentGender,"home");
-        RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
-
-        recyclerDifferentGender.setHasFixedSize(true);
-        recyclerDifferentGender.setLayoutManager(layoutManagerHorizontal);
-        recyclerDifferentGender.setAdapter(adapterDifferent);
-
-        recyclerDifferentGender.addOnItemTouchListener(new RecyclerItemClickListener(
-                getActivity(),
-                recyclerDifferentGender,
-                new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Artistas artista = listDifferentGender.get(position);
-                        abrirTelaDetalhesArtista(artista);
-                    }
-
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-
-                    }
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    }
-                }
-        ));
-
-
-    }
-
 
     public void configRecyclerViewGeneros() {
         String[] generos = {"rock", "rap", "pop", "mpb", "funk", "sertanejo", "reggae"};
@@ -189,41 +145,7 @@ public class HomeFragment extends Fragment {
                 listGenre.add(artistas.get(i));
             }
         }
-        configRecyclerViewListaGenero();
-    }
-
-    public void configRecyclerViewListaGenero() {
-        layoutGenero.setVisibility(View.VISIBLE);
-        AdapterArtista adapterArtista = new AdapterArtista(listGenre,"home");
-        RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
-
-        recyclerArtistGenre.setHasFixedSize(true);
-        recyclerArtistGenre.setLayoutManager(layoutManagerHorizontal);
-        recyclerArtistGenre.setAdapter(adapterArtista);
-
-        recyclerArtistGenre.addOnItemTouchListener(new RecyclerItemClickListener(
-                getActivity(),
-                recyclerArtistGenre,
-                new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Artistas artista = listGenre.get(position);
-                        abrirTelaDetalhesArtista(artista);
-                    }
-
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-
-                    }
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    }
-                }
-        ));
-
-
+        configRecyclerViewArtist(listGenre, recyclerArtistGenre);
     }
 
     private void abrirTelaDetalhesArtista(Artistas artista){
@@ -245,11 +167,12 @@ public class HomeFragment extends Fragment {
         recyclerDifferentGender = view.findViewById(R.id.recyclerGenerosDiferentes);
         recyclerGenre = view.findViewById(R.id.recyclerEscolhaGenero);
         recyclerArtistGenre = view.findViewById(R.id.recyclerArtistasGenero);
-        layoutGenero = view.findViewById(R.id.layoutGeneroArtistas);
 
-        retrofit = RetrofitConfig.getRetrofit();
+        ViewModelProvider.NewInstanceFactory newInstanceFactory = new ViewModelProvider.NewInstanceFactory();
+        artistListViewModel = newInstanceFactory.create(artistListViewModel.getClass());
+        artistListViewModel.init();
+
     }
-
 
     @Override
     public void onStart() {
