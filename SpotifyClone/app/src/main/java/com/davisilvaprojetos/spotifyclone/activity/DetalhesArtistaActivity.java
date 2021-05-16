@@ -30,4 +30,5 @@ public class DetalhesArtistaActivity extends AppCompatActivity {
             textBibliographyArtist.setText(artista.getBibliography());
         }
     }
+
 }

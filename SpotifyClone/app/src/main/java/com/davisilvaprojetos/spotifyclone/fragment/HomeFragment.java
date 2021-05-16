@@ -18,6 +18,7 @@ import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
 import com.davisilvaprojetos.spotifyclone.adapter.AdapterGenero;
 import com.davisilvaprojetos.spotifyclone.api.ApiService;
 import com.davisilvaprojetos.spotifyclone.helper.RecyclerItemClickListener;
+import com.davisilvaprojetos.spotifyclone.helper.RequestConfig;
 import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
 import com.davisilvaprojetos.spotifyclone.model.Type;
@@ -34,7 +35,7 @@ import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
     private Retrofit retrofit;
-    private final List<Artistas> listArtist = new ArrayList<>();
+    private List<Artistas> listArtist = new ArrayList<>();
     private final List<Artistas> listDifferentGender = new ArrayList<>();
     private final List<Artistas> listGenre = new ArrayList<>();
     private Type typeMusic;
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void recuperarDadosArtista() {
-        listArtist.clear();
+        /*listArtist.clear();
         ApiService apiService = retrofit.create(ApiService.class);
         apiService.recuperarDadosArtista(
 
@@ -77,7 +78,13 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<Type> call, Throwable t) {
                 System.out.println("Erro: " + t.getMessage());
             }
-        });
+        });*/
+
+        listArtist.clear();
+        RequestConfig requestConfig = new RequestConfig();
+        listArtist = requestConfig.recoverArtistData();
+        configRecyclerViewArtist();
+        criarGeneroDiferente(listArtist);
     }
 
     public void configRecyclerViewArtist() {
