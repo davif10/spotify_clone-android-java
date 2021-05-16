@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void configRecyclerViewArtist() {
-        AdapterArtista adapterArtista = new AdapterArtista(listArtist, getActivity());
+        AdapterArtista adapterArtista = new AdapterArtista(listArtist,"home");
         RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
 
         recyclerArtist.setHasFixedSize(true);
@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void configRecyclerViewListaDiferente() {
-        AdapterArtista adapterDifferent = new AdapterArtista(listDifferentGender, getActivity());
+        AdapterArtista adapterDifferent = new AdapterArtista(listDifferentGender,"home");
         RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
 
         recyclerDifferentGender.setHasFixedSize(true);
@@ -209,7 +209,7 @@ public class HomeFragment extends Fragment {
 
     public void configRecyclerViewListaGenero() {
         layoutGenero.setVisibility(View.VISIBLE);
-        AdapterArtista adapterArtista = new AdapterArtista(listGenre, getActivity());
+        AdapterArtista adapterArtista = new AdapterArtista(listGenre,"home");
         RecyclerView.LayoutManager layoutManagerHorizontal = layoutHorizontal();
 
         recyclerArtistGenre.setHasFixedSize(true);

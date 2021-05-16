@@ -18,17 +18,22 @@ import java.util.List;
 
 public class AdapterArtista extends RecyclerView.Adapter<AdapterArtista.MyViewHolder>{
     private final List<Artistas> artistas;
-    private Context context;
+    private final String screen;
 
-    public AdapterArtista(List<Artistas> artistas, Context context) {
+    public AdapterArtista(List<Artistas> artistas, String screen) {
         this.artistas = artistas;
-        this.context = context;
+        this.screen = screen;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_artista,parent,false);
+        View view;
+        if(screen.equals("home")){
+             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_artista,parent,false);
+        }else{
+             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_artista_pesquisa,parent,false);
+        }
         return new MyViewHolder(view);
     }
 
