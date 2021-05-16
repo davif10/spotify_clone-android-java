@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ import com.davisilvaprojetos.spotifyclone.model.Artistas;
 import com.davisilvaprojetos.spotifyclone.model.Type;
 
 import com.davisilvaprojetos.spotifyclone.R;
+import com.davisilvaprojetos.spotifyclone.viewmodel.ArtistListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,7 @@ public class HomeFragment extends Fragment {
     private Type typeMusic;
     private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre, recyclerArtistGenre;
     private LinearLayout layoutGenero;
+    private ArtistListViewModel artistListViewModel = new ArtistListViewModel();
 
     public HomeFragment() {
     }
@@ -50,41 +53,23 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         configuracoesIniciais(view);
-
-        recuperarDadosArtista();
+        initObserver();
         configRecyclerViewGeneros();
         return view;
     }
 
-    private void recuperarDadosArtista() {
-        /*listArtist.clear();
-        ApiService apiService = retrofit.create(ApiService.class);
-        apiService.recuperarDadosArtista(
-
-        ).enqueue(new Callback<Type>() {
+    private void initObserver() {
+        artistListViewModel.get_artistList().observe(this, new Observer<List<Artistas>>() {
             @Override
-            public void onResponse(Call<Type> call, Response<Type> response) {
-                if (response.isSuccessful()) {
-                    typeMusic = response.body();
-                    if (typeMusic != null) {
-                        listArtist.addAll(typeMusic.getArtist());
-                        configRecyclerViewArtist();
-                        criarGeneroDiferente(listArtist);
-                    }
+            public void onChanged(List<Artistas> artistas) {
+                if (!artistas.isEmpty()) {
+                    listArtist = artistas;
+                    configRecyclerViewArtist();
+                    criarGeneroDiferente(listArtist);
                 }
             }
+        });
 
-            @Override
-            public void onFailure(Call<Type> call, Throwable t) {
-                System.out.println("Erro: " + t.getMessage());
-            }
-        });*/
-
-        listArtist.clear();
-        RequestConfig requestConfig = new RequestConfig();
-        listArtist = requestConfig.recoverArtistData();
-        configRecyclerViewArtist();
-        criarGeneroDiferente(listArtist);
     }
 
     public void configRecyclerViewArtist() {
