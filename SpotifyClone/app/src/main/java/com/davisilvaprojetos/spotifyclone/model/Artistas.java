@@ -1,12 +1,22 @@
 package com.davisilvaprojetos.spotifyclone.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "artists_table")
 public class Artistas implements Serializable {
+    @PrimaryKey
     private String id;
+    @ColumnInfo
     private String name;
+    @ColumnInfo
     private String image;
+    @ColumnInfo
     private String genre;
+    @ColumnInfo
     private String bibliography;
 
     public String getId() {
