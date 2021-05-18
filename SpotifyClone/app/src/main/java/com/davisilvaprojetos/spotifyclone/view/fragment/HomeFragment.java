@@ -1,4 +1,4 @@
-package com.davisilvaprojetos.spotifyclone.fragment;
+package com.davisilvaprojetos.spotifyclone.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.davisilvaprojetos.spotifyclone.activity.DetalhesArtistaActivity;
-import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
-import com.davisilvaprojetos.spotifyclone.adapter.AdapterGenero;
+import com.davisilvaprojetos.spotifyclone.view.activity.DetalhesArtistaActivity;
+import com.davisilvaprojetos.spotifyclone.view.adapter.AdapterArtista;
+import com.davisilvaprojetos.spotifyclone.view.adapter.AdapterGenero;
 import com.davisilvaprojetos.spotifyclone.helper.RecyclerItemClickListener;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
 
@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     private final List<Artistas> listDifferentGender = new ArrayList<>();
     private final List<Artistas> listGenre = new ArrayList<>();
     private RecyclerView recyclerArtist, recyclerDifferentGender, recyclerGenre, recyclerArtistGenre;
-    private ArtistListViewModel artistListViewModel = new ArtistListViewModel();
+    private ArtistListViewModel artistListViewModel;
 
     public HomeFragment() {
     }
@@ -41,6 +41,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        artistListViewModel = new ArtistListViewModel(getActivity());
         configuracoesIniciais(view);
         initObserver();
         configRecyclerViewGeneros();
@@ -169,8 +170,8 @@ public class HomeFragment extends Fragment {
         recyclerArtistGenre = view.findViewById(R.id.recyclerArtistasGenero);
 
         ViewModelProvider.NewInstanceFactory newInstanceFactory = new ViewModelProvider.NewInstanceFactory();
-        artistListViewModel = newInstanceFactory.create(artistListViewModel.getClass());
-        artistListViewModel.init();
+        artistListViewModel = newInstanceFactory.create(ArtistListViewModel.class);
+        artistListViewModel.init(getActivity());
 
     }
 

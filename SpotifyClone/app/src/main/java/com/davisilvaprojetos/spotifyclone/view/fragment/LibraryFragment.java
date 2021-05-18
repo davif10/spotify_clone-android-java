@@ -1,4 +1,4 @@
-package com.davisilvaprojetos.spotifyclone.fragment;
+package com.davisilvaprojetos.spotifyclone.view.fragment;
 
 import android.os.Bundle;
 

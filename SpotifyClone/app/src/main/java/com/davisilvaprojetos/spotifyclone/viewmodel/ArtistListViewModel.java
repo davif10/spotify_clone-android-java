@@ -1,36 +1,47 @@
 package com.davisilvaprojetos.spotifyclone.viewmodel;
 
-import androidx.lifecycle.LiveData;
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.davisilvaprojetos.spotifyclone.helper.RetrofitConfig;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
-import com.davisilvaprojetos.spotifyclone.repository.ArtistRepository;
+import com.davisilvaprojetos.spotifyclone.dataacess.ArtistRepository;
 
 import java.util.List;
 
 public class ArtistListViewModel extends ViewModel {
+    private Context context;
     private RetrofitConfig retrofitConfig = new RetrofitConfig();
-    private ArtistRepository artistRepository = new ArtistRepository(retrofitConfig);
+    private ArtistRepository artistRepository;
+
 
     private final MutableLiveData<List<Artistas>> _artistList = new MutableLiveData<>();
-     LiveData<List<Artistas>> artistList = get_artistList();
 
-    public void init(){
-        getAllArtists();
+    public ArtistListViewModel() {
     }
 
-    private void getAllArtists() {
+    public ArtistListViewModel(Context context) {
+        this.context = context;
+        artistRepository = new ArtistRepository(context);
+    }
+
+    public void init(Context context){
+        getAllArtists(context);
+    }
+
+
+    private void getAllArtists(Context context) {
         new Thread(){
             @Override
             public void run() {
                 super.run();
                 try {
+                    artistRepository = new ArtistRepository(context);
                     _artistList.postValue(artistRepository.getArtistList());
-
                 }catch (Exception e){
-                    System.out.println("Erro: "+e.getMessage());
+                    System.out.println("Erro no View Model: "+e.getMessage());
                 }
             }
         }.start();

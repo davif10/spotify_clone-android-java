@@ -1,4 +1,4 @@
-package com.davisilvaprojetos.spotifyclone.activity;
+package com.davisilvaprojetos.spotifyclone.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

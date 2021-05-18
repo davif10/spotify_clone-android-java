@@ -1,4 +1,4 @@
-package com.davisilvaprojetos.spotifyclone.activity;
+package com.davisilvaprojetos.spotifyclone.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.davisilvaprojetos.spotifyclone.R;
-import com.davisilvaprojetos.spotifyclone.fragment.HomeFragment;
-import com.davisilvaprojetos.spotifyclone.fragment.LibraryFragment;
-import com.davisilvaprojetos.spotifyclone.fragment.SearchFragment;
+import com.davisilvaprojetos.spotifyclone.view.fragment.HomeFragment;
+import com.davisilvaprojetos.spotifyclone.view.fragment.LibraryFragment;
+import com.davisilvaprojetos.spotifyclone.view.fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 

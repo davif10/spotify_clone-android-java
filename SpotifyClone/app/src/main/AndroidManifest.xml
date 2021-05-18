@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotifyClone">
         <activity
-            android:name=".activity.DetalhesArtistaActivity"
-            android:parentActivityName=".activity.MainActivity"
+            android:name=".view.activity.DetalhesArtistaActivity"
+            android:parentActivityName=".view.activity.MainActivity"
             />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LoadingActivity">
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

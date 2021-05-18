@@ -1,4 +1,4 @@
-package com.davisilvaprojetos.spotifyclone.fragment;
+package com.davisilvaprojetos.spotifyclone.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import android.widget.AdapterView;
 import android.widget.SearchView;
 
 import com.davisilvaprojetos.spotifyclone.R;
-import com.davisilvaprojetos.spotifyclone.activity.DetalhesArtistaActivity;
-import com.davisilvaprojetos.spotifyclone.adapter.AdapterArtista;
+import com.davisilvaprojetos.spotifyclone.view.activity.DetalhesArtistaActivity;
+import com.davisilvaprojetos.spotifyclone.view.adapter.AdapterArtista;
 import com.davisilvaprojetos.spotifyclone.helper.RecyclerItemClickListener;
 import com.davisilvaprojetos.spotifyclone.model.Artistas;
 import com.davisilvaprojetos.spotifyclone.viewmodel.ArtistListViewModel;
@@ -133,7 +133,7 @@ public class SearchFragment extends Fragment {
 
         ViewModelProvider.NewInstanceFactory newInstanceFactory = new ViewModelProvider.NewInstanceFactory();
         artistListViewModel = newInstanceFactory.create(artistListViewModel.getClass());
-        artistListViewModel.init();
+        artistListViewModel.init(getActivity());
 
         clickRecycler(recyclerSearch);
         searchListeners(searchViewData);
